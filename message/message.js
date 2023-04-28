@@ -37,6 +37,6 @@ Badmin: 'Fitur dapat Digunakan Setelah Bot menjadi ADMIN!'
 
 
 
-
+reloadFile(import.meta.url)
 
 

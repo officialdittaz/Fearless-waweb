@@ -21,7 +21,7 @@ const path  = require( 'path')
 const {Socket, smsg} = require ('../lib/simple.cjs')
 
 
-
+ 
 const thumb = fs.readFileSync('./stik/thumb.jpeg')
 const dashboardImg = fs.readFileSync('./stik/dashboard.jpg')
 const fearless = fs.readFileSync('./stik/fearless.jpg')
@@ -102,7 +102,7 @@ const settings = global.db.data.settings['settingbot']
 //Import message.js
 await (await import('./message.js')).default(prefix,command)
 //Import allfake.js
-await (await import('./allfake.js')).default(m)
+//await (await import('./allfake.js')).default(m)
 
 
 //Register terlebih dahulu sebelom pakai bot
