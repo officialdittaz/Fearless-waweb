@@ -117,7 +117,7 @@ clientId: 'botwaweb',
 dataPath: './session'
 }),
 playwright: {
-viewport: { width: 1920, height: 1080 },
+viewport: { width: 1080, height: 1920 },
 headless: true,
 devtools: false,
 args: [

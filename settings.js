@@ -8,7 +8,7 @@ global.reloadFile = (file) => reloadFile(file)
 global.version = version
 global.chalk = chalk
 global.require = require
-global.language = "id"
+global.language = "en"
 global.nomerOwner ="6285156137901"
 global.nomerOwner2 = "62813390135872"
 global.runWith = "Replit"
@@ -50,7 +50,6 @@ global.gcounti = {
 'prem' : 60,
 'user' : 20
 } 
-
 
 
 
