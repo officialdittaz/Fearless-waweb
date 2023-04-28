@@ -3,5 +3,5 @@
 /session
 /.git
 /.config
-/database/database.jso
+/database/database.json
 /yarn.lock

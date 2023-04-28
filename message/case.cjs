@@ -101,8 +101,7 @@ const settings = global.db.data.settings['settingbot']
 
 //Import message.js
 await (await import('./message.js')).default(prefix,command)
-//Import allfake.js
-//await (await import('./allfake.js')).default(m)
+
 
 
 //Register terlebih dahulu sebelom pakai bot
@@ -195,25 +194,6 @@ if(isCmd) logs.commands(m,command)
 
 
 
-
-//Set Quoted
-if(Qoted === "ftoko"){
-var setQuoted = ftoko
-} else if(Qoted === "fkontak"){
-var setQuoted = fkontak
-} else if(Qoted === "ftext"){
-var setQuoted = ftext
-}else if(Qoted === "ftroli"){
-var setQuoted = ftroli
-} else if(Qoted === "floc"){
-var setQuoted = floc
-} else if(Qoted === "fimage"){
-var setQuoted = fimage
-} else if(Qoted === "m"){
-var setQuoted = m
-} else if(Qoted === "fdoc"){
-var setQuoted = fdoc
-}
 
 
   
