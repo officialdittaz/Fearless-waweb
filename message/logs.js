@@ -14,8 +14,7 @@ export const message = async(conn,m,budy) => {
 if(budy && m._data.id.remote !== 'status@broadcast') await console.log(m.isGroup? 
 chalk.bgMagentaBright(chalk.black("[  GROUP  ]")): //group chat
 chalk.bgGreenBright(chalk.black("[ PRIVATE ]")),  //private chat
-chalk.green(moment.tz('Asia/Jakarta').format('HH:mm')), //waktu
-chalk.hex('#9767FC').overline(budy), chalk.cyan('dari'),  //teks 
+chalk.hex('#9767FC').overline(" " + budy), chalk.cyan('dari'),  //teks 
 chalk.hex('#A8E643').overline(`${m.pushname}`), //nama users
 m.isGroup? `${chalk.red('di gc')} ${chalk.red(m.groupName)}` : "") 
 console.log(chalk.bgYellowBright(chalk.black(`ID: ${m.senderNumber}`)),
@@ -29,8 +28,7 @@ chalk.green(moment.tz('Asia/Jakarta').format('HH:mm')), //waktu
 export const commands = async(m,command) => {
 
 console.log(chalk.bgCyanBright(chalk.black("[ COMMAND ]")),// command
-chalk.green(moment.tz('Asia/Jakarta').format('HH:mm')), //waktu
-chalk.blue(`${command} [${m.args.length}]`), chalk.cyan('dari'),// teks
+chalk.blue(` ${command} [${m.args.length}]`), chalk.cyan('dari'),// teks
 chalk.red(`${m.pushname}`),// nama
 m.isGroup? `${chalk.red('di gc')} ${chalk.red(m.groupName)}` : "")//keterangan  
 console.log(chalk.bgYellowBright(chalk.black(`ID: ${m.senderNumber}`)),

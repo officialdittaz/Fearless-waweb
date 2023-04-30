@@ -13,8 +13,6 @@ const qrcode = require('qrcode-terminal')
 const port = process.env.PORT || 3000   
 const proxy = process.env.http_proxy || 'http://168.63.76.32:3128';
 const exec = require('util').promisify(require('child_process').exec);
-//const wweb = require('wwebjs')
-//const { Client, Location, List, Buttons, LocalAuth } = wweb
 
 //Function untuk menghapus sampah tmp di database
 setInterval(() => {
@@ -82,6 +80,7 @@ gradient: ['red', 'magenta']
 //Connect to WhatsApp
 const connectToWhatsApp = async () => {
 (await import('./settings.js'))
+await import('./config.js')
 const chromiumPath = (await exec("whereis chromium")).stdout.trim().split(":")[1].trim();
 const { Client, Location, List, Buttons, LocalAuth } = (await import("wwebjs"))
 const {connectionUpdate} = (await import("./message/connection.js"))
@@ -117,8 +116,8 @@ clientId: 'botwaweb',
 dataPath: './session'
 }),
 playwright: {
-viewport: { width: 1920, height: 1080 },
-headless: true,
+//viewport: { width: 1080, height: 1920 },
+headless: false,
 devtools: false,
 args: [
 '--aggressive-tab-discard',
@@ -150,7 +149,7 @@ takeoverTimeoutMs: 'Infinity'
 
 
 conn.initialize();
-await connect(conn,port)
+//await connect(conn,port)
 await connectionUpdate(conn)
   
 

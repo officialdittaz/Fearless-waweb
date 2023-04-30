@@ -21,7 +21,7 @@ const path  = require( 'path')
 const {Socket, smsg} = require ('../lib/simple.cjs')
 
 
- 
+
 const thumb = fs.readFileSync('./stik/thumb.jpeg')
 const dashboardImg = fs.readFileSync('./stik/dashboard.jpg')
 const fearless = fs.readFileSync('./stik/fearless.jpg')

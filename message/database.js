@@ -12,7 +12,7 @@ export default async function(){
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 
 
-  
+global.lala = "ffcfhjgkhg"
 global.isNumber = isNumber
 global.db = new Low(new JSONFile(`database/database.json`))
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
@@ -102,3 +102,6 @@ autoSticker: false,
 
 if (global.db.data) await global.db.write()  
 }//akhir dari export default
+
+
+reloadFile(import.meta.url)

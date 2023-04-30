@@ -1,9 +1,13 @@
 
+import { createRequire } from 'module'
+import { fileURLToPath } from "url"
+import fs from "fs"
+
 
 export default async function(prefix,command) {
 global.mess = {
 wait: 'Tunggu sebentar ya kak',
-query: 'Masukan query',
+query: '  query',
 search: 'Searching...',
 scrap: '*Scrapping...*',
 success: 'Berhasil!',
@@ -37,6 +41,12 @@ Badmin: 'Fitur dapat Digunakan Setelah Bot menjadi ADMIN!'
 
 
 
-reloadFile(import.meta.url)
+//reloadFile(import.meta.url)
+let fileP = fileURLToPath(import.meta.url)
+fs.watchFile(fileP, () => {
+    fs.unwatchFile(fileP)
+    console.log(`Update File "${fileP}"`)
+    import(`${import.meta.url}?update=${Date.now()}`)
+})
 
 
