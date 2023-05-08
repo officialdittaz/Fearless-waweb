@@ -66,16 +66,20 @@ conn.on('auth_failure', msg => {
 });
   
 conn.on('ready', () => {
+conn.sendMessage(`${nomerOwner}@c.us`, 'Bot Connected!!')
     setTimeout(() => {
 chalkAnimation.rainbow('Bot is Ready').start(); // Animation resumes
 }, 2000);
 });
 
-/*
+
 conn.on('loading_screen', (percent, message) => {
-   // console.log('LOADING SCREEN', percent, message);
+   console.log('LOADING SCREEN', percent, message);
 });
-*/
+
+ conn.on("disconnected", m => {
+if (m) process.send('reset') 
+})
 
 
 

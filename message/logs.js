@@ -11,7 +11,7 @@ import { fileURLToPath, URL } from 'url'
 
 //Log text di group dan private chat
 export const message = async(conn,m,budy) => {
-if(budy && m._data.id.remote !== 'status@broadcast') await console.log(m.isGroup? 
+if(budy && m.chat !== 'status@broadcast') await console.log(m.isGroup? 
 chalk.bgMagentaBright(chalk.black("[  GROUP  ]")): //group chat
 chalk.bgGreenBright(chalk.black("[ PRIVATE ]")),  //private chat
 chalk.hex('#9767FC').overline(" " + budy), chalk.cyan('dari'),  //teks 

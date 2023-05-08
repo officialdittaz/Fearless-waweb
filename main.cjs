@@ -8,7 +8,7 @@ const path = require('path')
 const axios = require ('axios');
 
 const {Socket, smsg} = require ('./lib/simple.cjs')
-//const {Fearless} = require ('./message/case.js')
+
 const qrcode = require('qrcode-terminal')
 const port = process.env.PORT || 3000   
 const proxy = process.env.http_proxy || 'http://168.63.76.32:3128';
@@ -80,12 +80,13 @@ gradient: ['red', 'magenta']
 //Connect to WhatsApp
 const connectToWhatsApp = async () => {
 (await import('./settings.js'))
-await import('./config.js')
 const chromiumPath = (await exec("whereis chromium")).stdout.trim().split(":")[1].trim();
-const { Client, Location, List, Buttons, LocalAuth } = (await import("wwebjs"))
+//const { Client, Location, List, Buttons, LocalAuth } = (await import("mywajs"))
+const { Client, serialize } = (await import("./lib/serialize.js"))
 const {connectionUpdate} = (await import("./message/connection.js"))
 const {connect} = (await import("./server.js"))
-
+const {Message,readCommands} = (await import('./message/plugin.js'))
+readCommands()
 
 await (await import("./message/database.js")).default()
 
@@ -110,11 +111,8 @@ console.log("New update runtime")
 
 
 //new npm.mywajs.
-const conn = new Client({
-authStrategy: new LocalAuth({
-clientId: 'botwaweb',
-dataPath: './session'
-}),
+const connection = new Client({
+authStrategy:new npm.mywajs.LocalAuth(),
 playwright: {
 //viewport: { width: 1080, height: 1920 },
 headless: false,
@@ -134,7 +132,7 @@ args: [
 '--no-first-run',
 '--no-sandbox',
 '--no-zygote',
-'--enable-features=WebContentsForceDark:inversion_method/cielab_based/image_behavior/selective/text_lightness_threshold/150/background_lightness_threshold/205'
+//'--enable-features=WebContentsForceDark:inversion_method/cielab_based/image_behavior/selective/text_lightness_threshold/150/background_lightness_threshold/205'
 ],
 bypassCSP: true,
 executablePath:chromiumPath 
@@ -142,22 +140,23 @@ executablePath:chromiumPath
 markOnlineAvailable: true,
 qrMaxRetries: 2,
 userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36',
-clearSessions: true,
+clearSessions: false,
 takeoverTimeoutMs: 'Infinity'
 })
   
-
+global.conn = await Socket(connection)
 
 conn.initialize();
-//await connect(conn,port)
+await connect(conn,port)
 await connectionUpdate(conn)
+
   
-
-
 conn.on("message_create", async (m) => {
 if (global.db.data) await global.db.write() 
 if (!m._data.isNewMsg) return
-require('./message/case.cjs')(conn, m)
+m = await smsg(conn, m)
+require('./message/case.cjs')(conn,m)
+await Message(conn, m)
 })
 
 

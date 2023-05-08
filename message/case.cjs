@@ -20,19 +20,23 @@ const { join, dirname } = require( 'path')
 const path  = require( 'path')
 const {Socket, smsg} = require ('../lib/simple.cjs')
 
-
-
+ 
+  
 const thumb = fs.readFileSync('./stik/thumb.jpeg')
 const dashboardImg = fs.readFileSync('./stik/dashboard.jpg')
 const fearless = fs.readFileSync('./stik/fearless.jpg')
 var publik = false
 
+       
+     
 module.exports = async(conn, m)=>{
 try{
-m = await smsg(conn, m)
-const { type,args,sender,ucapanWaktu,botNumber,senderNumber,groupName,groupId,groupMembers,groupDesc,groupOwner,pushname,itsMe,isGroup,mentionByTag,mentionByReply,users,budy,body,numberQuery,id, hasMedia,quotedMsg, timestamp,hasQuotedMsg } = m
+//console,log(m)  
+//console.log(m._data)
+//m = await smsg(conn, m)
+const { type,args,sender,ucapanWaktu,botNumber,senderNumber,groupName,groupId,groupMembers,groupDesc,groupOwner,pushname,itsMe,isGroup,mentionByTag,mentionByReply,users,budy,body,numberQuery,id, hasMedia,quotedMsg,from, timestamp,hasQuotedMsg } = m
 
-  
+    
 
 const {formatp, getRandom,generateProfilePicture, getCase,runtime,FileSize,h2k, makeid,kyun,randomNomor,jsonformat, isUrl, fetchJson,pickRandom,getGroupAdmins, sleep,getBuffer}  = (await import('../lib/myfunc.cjs')) 
 const logs = (await import('./logs.js'))
@@ -71,15 +75,16 @@ const sewa = db.data.sewa
 const spammer = []
 
 
-var Ownerin ="6285156137901@s.whatsapp.net"
+var Ownerin ="6285156137901@c.us"
 var ownerNumber = [`${m.author}`,`${nomerOwner}@c.us` ,`${nomerOwner2}@c.us`,`6285156137901@c.us`]
 
 
 
 
-const from = m.chat
+
 const prem = _prem.checkPremiumUser(sender, premium)
 const prefix = "."
+//const prefix = m.prefix = /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#%^&.©^😁🥴😶]/gi.test(m.body) ? m.body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#%^&.©^😁🥴😶]/gi)[0] : ""
 const isCmd = m.body.startsWith(prefix)
 const isCommand = isCmd? m.body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase() :""
 const q = args.join(' ')
@@ -158,7 +163,7 @@ const userVerified = user? db.data.users[m.sender].date : false
 
   
 //Bot hanya merespon jika button miliknya saja yang di tekan 
-if(m.myButton) {return}
+//if(m.myButton) {return}
 
 
 //AUTO Read Message  
@@ -170,20 +175,20 @@ if (isCmd){
 conn.sendPresenceAvailable()
 }
 
-
+  
 
 
  
 //Public & Self And Banchat
-if (!publik && !itsMe && !isOwner && !theOwner) {return} 
+if (!publik && !isOwner ) {return} 
 if (isGroup && !isPremium && isBanchat && !itsMe && !isOwner) {return}
 //log(m) 
 
 
  
-  
+   
 //Console log   
-if(!isCmd && budy.length < 8000 && itsMe && !isSticker && !isMedia) logs.message(conn,m,budy,AntiSpam) 
+if(!isCmd && budy.length < 8000 && !isSticker && !isMedia && !itsMe) logs.message(conn,m,budy,AntiSpam) 
 if(isCmd) logs.commands(m,command) 
 
 
@@ -192,16 +197,16 @@ if(isCmd) logs.commands(m,command)
 
 
 
+ 
+
+ 
 
 
-
-
-  
   
 
 //SetReply
 const setReply = async(result,member = []) =>{ 
-conn.sendMessage(m.chat,result);
+conn.sendMessage(m.chat,result,{quoted:m});
 }
 
 
@@ -504,6 +509,39 @@ if (!isBotGroupAdmins) return reply(mess.Badmin)
 let chat = await m.getChat();
 let asu = 'https://chat.whatsapp.com/' + await chat.getInviteCode()
 setReply(asu)
+}
+break
+
+
+case 'hentai':{
+ async function hentai() {
+    return new Promise((resolve, reject) => {
+        const page = Math.floor(Math.random() * 1153)
+        axios.get('https://sfmcompile.club/page/'+page)
+        .then((data) => {
+            const $ = cheerio.load(data.data)
+            const hasil = []
+            $('#primary > div > div > ul > li > article').each(function (a, b) {
+                hasil.push({
+                    title: $(b).find('header > h2').text(),
+                    link: $(b).find('header > h2 > a').attr('href'),
+                    category: $(b).find('header > div.entry-before-title > span > span').text().replace('in ', ''),
+                    share_count: $(b).find('header > div.entry-after-title > p > span.entry-shares').text(),
+                    views_count: $(b).find('header > div.entry-after-title > p > span.entry-views').text(),
+                    type: $(b).find('source').attr('type') || 'image/jpeg',
+                    video_1: $(b).find('source').attr('src') || $(b).find('img').attr('data-src'),
+                    video_2: $(b).find('video > a').attr('href') || ''
+                })
+            })
+            resolve(hasil)
+        })
+    })
+}
+let ah = await hentai()
+let nano = await pickRandom(ah)
+conn.sendMessage(from,{video:{url: nano.video_1}},{quoted:m})
+
+
 }
 break
 

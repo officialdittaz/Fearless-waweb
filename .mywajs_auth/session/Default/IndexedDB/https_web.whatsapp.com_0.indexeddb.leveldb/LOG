@@ -1,0 +1,28 @@
+2023/05/08-14:37:30.502 6a5 Reusing MANIFEST /home/runner/Fearless-waweb/.mywajs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/05/08-14:37:30.504 6a5 Recovering log #3595
+2023/05/08-14:37:30.507 6a5 Reusing old log /home/runner/Fearless-waweb/.mywajs_auth/session/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/003595.log 
+2023/05/08-14:37:44.047 6a5 Compacting 1@1 + 10@2 files
+2023/05/08-14:37:44.162 6a5 Generated table #3601@1: 9163 keys, 2151724 bytes
+2023/05/08-14:37:44.328 6a5 Generated table #3602@1: 29532 keys, 2242814 bytes
+2023/05/08-14:37:44.507 6a5 Generated table #3603@1: 60778 keys, 2248758 bytes
+2023/05/08-14:37:44.633 6a5 Generated table #3604@1: 94841 keys, 2246687 bytes
+2023/05/08-14:37:44.795 6a5 Generated table #3605@1: 98743 keys, 2251343 bytes
+2023/05/08-14:37:44.943 6a5 Generated table #3606@1: 96520 keys, 2278539 bytes
+2023/05/08-14:37:45.132 6a5 Generated table #3607@1: 3460 keys, 2751726 bytes
+2023/05/08-14:37:45.172 6a5 Generated table #3608@1: 6014 keys, 2122224 bytes
+2023/05/08-14:37:45.195 6a5 Generated table #3609@1: 527 keys, 2109183 bytes
+2023/05/08-14:37:45.277 6a5 Generated table #3610@1: 54424 keys, 2187207 bytes
+2023/05/08-14:37:45.293 6a5 Generated table #3611@1: 7391 keys, 151301 bytes
+2023/05/08-14:37:45.293 6a5 Compacted 1@1 + 10@2 files => 22741506 bytes
+2023/05/08-14:37:45.296 6a5 compacted to: files[ 0 2 41 0 0 0 0 ]
+2023/05/08-14:37:45.297 6a5 Delete type=2 #3575
+2023/05/08-14:37:45.297 6a5 Delete type=2 #3576
+2023/05/08-14:37:45.297 6a5 Delete type=2 #3577
+2023/05/08-14:37:45.297 6a5 Delete type=2 #3578
+2023/05/08-14:37:45.297 6a5 Delete type=2 #3579
+2023/05/08-14:37:45.297 6a5 Delete type=2 #3580
+2023/05/08-14:37:45.298 6a5 Delete type=2 #3581
+2023/05/08-14:37:45.298 6a5 Delete type=2 #3582
+2023/05/08-14:37:45.298 6a5 Delete type=2 #3583
+2023/05/08-14:37:45.298 6a5 Delete type=2 #3584
+2023/05/08-14:37:45.298 6a5 Delete type=2 #3598
